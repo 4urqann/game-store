@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
-import { FormsModule } from '@angular/forms';
 
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
@@ -21,7 +20,7 @@ const AngMaterial = [
 ]
 
 const routes: Routes = [
-    { path: 'homepage', component: HomepageComponent },
+    { path: '', component: HomepageComponent },
     { path: 'game-details/:id', component: GameDetailsComponent },
     { path: 'cart', component: CartComponent },
     { path: 'library', component: LibraryComponent }
@@ -41,7 +40,6 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         CommonModule,
         SharedModule,
-        FormsModule,
         AngMaterial
     ],
     exports: []

@@ -14,7 +14,7 @@ export class GameCardComponent {
 constructor(private router: Router, private route: ActivatedRoute) {}
 
 public details(id: any) {
-  this.router.navigate(['/game-details', id], {relativeTo: this.route});
+  this.router.navigate(['home','game-details', id]);
 }
 
 }

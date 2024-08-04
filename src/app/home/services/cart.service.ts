@@ -36,7 +36,11 @@ export class CartService {
     }
   }
 
-  profileContainer() {
-
+  get total() {
+    let amount: number = 0;
+    this.addedGames.forEach(game => {
+     amount = amount + game.price;
+    });
+    return amount;
   }
 }

@@ -2,7 +2,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/homepage">Game App</a>
+    <a class="navbar-brand" (click)="notiService.openSnackbar('Back too homepage!!!')" routerLink="/home">Game App</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,10 +10,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link fa-solid fa-cart-shopping" routerLink="/cart" >Cart </a>
+          <a class="nav-link fa-solid fa-cart-shopping" routerLink="home/cart" (click)="notiService.openSnackbar('This is Cart')" >Cart </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/library">Library</a>
+          <a class="nav-link" routerLink="home/library" (click)="notiService.openSnackbar('This is Library')" >Library</a>
         </li>
         <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

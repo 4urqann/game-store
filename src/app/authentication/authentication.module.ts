@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { SignupComponent } from "./components/signup/signup.component";
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule, Routes } from "@angular/router";
+import { SharedModule } from "../shared/shared.module";
 
 const AngMaterial = [
     MatCardModule,
@@ -30,8 +31,7 @@ const routes: Routes = [
     imports: [
         RouterModule.forChild(routes),
         CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
+        SharedModule,
         AngMaterial
     ],
     exports: [SignupComponent]

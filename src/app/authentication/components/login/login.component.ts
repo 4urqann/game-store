@@ -37,7 +37,7 @@ export class LoginComponent {
         console.log(user);
         if (this.loginForm.value.username === user.username && this.loginForm.value.password === user.password) {
           console.log('success');
-          this.router.navigate(['/homepage']);
+          this.router.navigate(['home']);
 
         } else { }
 

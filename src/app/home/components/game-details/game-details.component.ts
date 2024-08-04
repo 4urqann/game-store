@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Game } from '../../game.model';
 import { CartService } from '../../services/cart.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationPopupComponent } from '../../../shared/components/confirmation-popup/confirmation-popup.component';
 
 
 @Component({
@@ -14,7 +16,8 @@ export class GameDetailsComponent implements OnInit {
   constructor(
     private Http: HttpClient,
     private route: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService,
+    public dialog: MatDialog
   ) { }
   BaseURL: string = "http://localhost:3000/games";
 
@@ -49,6 +52,17 @@ export class GameDetailsComponent implements OnInit {
 
   onRemove() {
     this.cartService.removeFromCart(this.game);
+  }
+
+  onBuy() {
+      const dialogRef = this.dialog.open(ConfirmationPopupComponent);
+      dialogRef.componentInstance.confirMsg = `Are you sure you want to proceed with this purchase ${this.game.price}?` 
+      dialogRef.afterClosed().subscribe(isConfirm => {
+        if (isConfirm) { 
+          console.log(isConfirm);
+          this.cartService.gamesOwned.push(this.game);
+        } 
+      });
   }
 
 }

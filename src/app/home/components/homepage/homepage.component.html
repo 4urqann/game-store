@@ -1,5 +1,7 @@
 <h1>Games</h1>
 
-<input type="text" placeholder="filter..." [(ngModel)]="_filterText" >
+<input type="text" placeholder="filter..." [formControl]="filterControl">
 
-<app-game-card *ngFor="let game of games" [currentGame]="game"></app-game-card>
+<app-game-card *ngFor="let game of filteredGames" [currentGame]="game"></app-game-card>
+
+<h2 *ngIf="filteredGames?.length === 0">No games found!!!</h2>
