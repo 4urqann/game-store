@@ -44,7 +44,7 @@ export class GameDetailsComponent implements OnInit {
 
   onAdd() {
     this.cartService.addToCart(this.game);
-
+    console.log(this.cartService.addedGames);
   }
 
   onRemove() {
