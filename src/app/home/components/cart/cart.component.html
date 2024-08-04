@@ -1,0 +1,6 @@
+
+<h1>Cart Games</h1>
+<app-game-card *ngFor="let game of cartService.addedGames" [currentGame]="game"></app-game-card>
+<h3>Total:</h3>
+<button (click)="onBuy()" class="btn btn-success" >Buy</button>
+

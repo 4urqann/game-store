@@ -1,0 +1,24 @@
+
+
+.example-card {
+    max-width: 200px;
+    max-height: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://i.etsystatic.com/23631389/r/il/da40d6/2655429430/il_fullxfull.2655429430_ijir.jpg');
+    background-size: cover;
+    left: 50px;
+  }
+  
+  .main-img {
+      border-radius: 8px;
+      padding: 8px;
+      height: 300px;
+      // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .main-img:hover {
+      opacity: 0.7;
+      // filter: brightness(110%);
+  }
