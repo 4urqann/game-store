@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../../user.model';
 import { Router } from '@angular/router';
 import { CartService } from '../../../home/services/cart.service';
+import { ProfileService } from '../../../shared/services/profile.service';
+import { AuthenticationService } from '../../authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +14,13 @@ import { CartService } from '../../../home/services/cart.service';
 })
 export class LoginComponent {
   constructor(private http: HttpClient,
-              private router: Router,
-              private cartService: CartService) { }
+    private router: Router,
+    private cartService: CartService,
+    private authService: AuthenticationService) { }
 
-  userProfile: string = '';
+  baseURL: string = "http://localhost:3000/users";
 
-  baseURL: string = "http://localhost:3000/users"
+  // userProfile!: User;
 
   loginForm: FormGroup = new FormGroup({
     "username": new FormControl(null, Validators.required),
@@ -37,6 +40,13 @@ export class LoginComponent {
         console.log(user);
         if (this.loginForm.value.username === user.username && this.loginForm.value.password === user.password) {
           console.log('success');
+
+          this.authService.session = user;
+
+          // this.userProfile = this.loginForm.value;  //storing the current users, username & password
+          // console.log(this.userProfile);
+          // this.profileService.getUser(this.userProfile);
+
           this.router.navigate(['home']);
 
         } else { }
@@ -46,8 +56,5 @@ export class LoginComponent {
     });
 
   }
-
-  
-
 
 }

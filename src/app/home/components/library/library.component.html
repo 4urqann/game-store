@@ -1,3 +1,45 @@
-<h1>Your Game's</h1>
-<app-game-card *ngFor="let game of cartService.gamesOwned" [currentGame]="game"></app-game-card>
+<!-- <h1>Your Game's</h1>
+<app-game-card *ngFor="let game of cartService.gamesOwned" [currentGame]="game"></app-game-card> -->
 
+<div class="row">
+
+    <div class="col-3">
+
+        <app-sidenavbar></app-sidenavbar>
+
+    </div>
+
+
+    <div class="d-flex flex-column col-9 ">
+
+        <!-- <div class="back d-flex" routerLink="/home">
+            <i class="fa-solid fa-chevron-left"></i>
+        </div> -->
+
+        <div *ngIf="cartService.gamesOwned.length !== 0" class="d-flex flex-column gap-3">
+
+            <h1>Your Game's</h1>
+
+            <div class="d-flex flex-wrap gap-3">
+
+                <app-game-card class="" *ngFor="let game of cartService.gamesOwned"
+                    [currentGame]="game"></app-game-card>
+
+            </div>
+
+        </div>
+
+
+        <div *ngIf="cartService.gamesOwned.length === 0"
+            class="vh-100 d-flex justify-content-center align-items-center">
+
+            <div class="d-flex flex-column align-items-center gap-3">
+                <h1>NO Games Owned</h1>
+                <p class="flex-item fa-solid fa-cart-shopping fa-xl fa-bounce"></p>
+            </div>
+
+        </div>
+
+    </div>
+    
+</div>

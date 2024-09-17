@@ -1,37 +1,110 @@
-<button routerLink="/home">Back</button>
-<h1>{{game?.title}}</h1>
-<h3>{{game?.catagory}}</h3>
-<p>{{game?.discription}}</p>
-<div>
-    <!-- <img class="image" [src]="game.mainimg" alt="Photo of a Shiba Inu"> -->
+<div class="row">
 
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="image" src={{game?.mainimg}} alt="First slide">
+  <div class="col-2 ">
+    <app-sidenavbar></app-sidenavbar>
+  </div>
+
+  <div class="col-9 ">
+
+    <div class="back d-flex align-items-center" routerLink="/home">
+      <i class="fa-solid fa-chevron-left"></i>
+    </div>
+
+    <div class="d-flex container">
+
+      <div class="flex-column d-flex justify-content-start" style="gap: 20px;">
+
+        <div>
+          <h1>{{game?.title}}</h1>
+
+          <div class="d-flex flex-row">
+            <div class="d-flex flex-column">
+              <h3 class="catagory">{{game?.catagory}}</h3>
             </div>
-            <div class="carousel-item">
-                <img class="image"
-                    src="https://prod-printler-front-as.azurewebsites.net/media/photo/141022.jpg?mode=crop&width=727&height=1024&rnd=0.0.1"
-                    alt="Second slide">
+
+
+            <div class="container d-flex flex-column">
+
+              <div class="d-flex flex-row-reverse">
+                <div class="col-md-12">
+                  <div class="stars">
+                    <form action="">
+
+                      <input class="star star-5" id="star-5" type="radio" name="star" />
+                      <label class="star star-5" for="star-5"></label>
+                      <input class="star star-4" id="star-4" type="radio" name="star" />
+                      <label class="star star-4" for="star-4"></label>
+                      <input class="star star-3" id="star-3" type="radio" name="star" />
+                      <label class="star star-3" for="star-3"></label>
+                      <input class="star star-2" id="star-2" type="radio" name="star" />
+                      <label class="star star-2" for="star-2"></label>
+                      <input class="star star-1" id="star-1" type="radio" name="star" />
+                      <label class="star star-1" for="star-1"></label>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+
             </div>
-            <div class="carousel-item">
-                <img class="image" src={{game?.mainimg}} alt="Third slide">
-            </div>
+
+          </div>
+
         </div>
-        <a class="carousel-control-prev"  role="button" data-slide="prev">
+
+        <p>{{game?.discription}}</p>
+
+        <div class="d-flex align-items-center" style="gap: 15px;">
+
+          <div>
+            <button *ngIf="alreadyOwned" class="btn btn-success">Owned</button>
+            <button *ngIf="!alreadyOwned" (click)="onBuy()" class="btn btn-success">Buy</button>
+          </div>
+
+          <div>
+            <button *ngIf="doesGameExist()" (click)="onRemove()" class="btn btn-primary">Remove from cart</button>
+            <button *ngIf="!doesGameExist()" (click)="onAdd()" class="btn btn-primary">Add to cart</button>
+          </div>
+
+          <div class="price">
+            <p>Price</p>
+            <h4>{{game?.price | currency: 'INR' : 'symbol' : '.2-2'}}</h4>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src={{game.mainimg}} class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src={{game.mainimg}} class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src={{game.mainimg}} class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only"></span>
-        </a>
-        <a class="carousel-control-next"  role="button" data-slide="next">
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only"></span>
-        </a>
-    </div>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
 
-    <div>
-        <button *ngIf="!doesGameExist()" (click)="onAdd()" class="btn btn-primary">Add to cart</button>
-        <button *ngIf="doesGameExist()" (click)="onRemove()" class="btn btn-primary">Remove from cart</button>
-    </div>
 
-    <button (click)="onBuy()" class="btn btn-success">Buy</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

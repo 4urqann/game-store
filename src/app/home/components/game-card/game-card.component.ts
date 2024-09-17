@@ -1,7 +1,9 @@
 
-import { Component, EventEmitter, Input, input, OnInit, Output } from '@angular/core';
-import { Game } from '../../game.model';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { Game } from '../../game.model';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-game-card',
@@ -9,12 +11,25 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './game-card.component.scss'
 })
 export class GameCardComponent {
- @Input()currentGame!: Game;
 
-constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private cartService: CartService
+  ) { }
+  
+  @Input() currentGame!: Game;
 
-public details(id: any) {
-  this.router.navigate(['home','game-details', id]);
-}
+  public details(id: any) {
+    this.router.navigate(['home', 'game-details', id]);
+  }
+
+  directBuy() {
+    this.cartService.singlePurchase(this.currentGame);
+  }
+
+  dirCart() {
+    this.cartService.addToCart(this.currentGame);
+  }
 
 }

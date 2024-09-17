@@ -1,7 +1,44 @@
-<h1>Games</h1>
 
-<input type="text" placeholder="filter..." [formControl]="filterControl">
+<div class="d-flex row">
 
-<app-game-card *ngFor="let game of filteredGames" [currentGame]="game"></app-game-card>
+    <div class="d-flex col-2">
+        <app-sidenavbar></app-sidenavbar>
+    </div>
 
-<h2 *ngIf="filteredGames?.length === 0">No games found!!!</h2>
+    <div class=" flex-column container col-9">
+
+        <div class="d-flex justify-content-center align-items-baseline gap-1 ">
+
+            <div class="d-flex ">
+                <form action="">
+                    <input class="searchbar" type="text" placeholder="filter..." [formControl]="filterControl">
+                </form>
+            </div>
+
+            <div class="d-flex ">
+                <i class="fa-solid fa-magnifying-glass searchicon"></i>
+            </div>
+
+        </div>
+
+        <!-- <app-search-bar></app-search-bar> -->
+
+        <button (click)="addAllGames()" class="btn btn-primary">Add all Games</button>
+
+        <h1>Games</h1>
+
+        <div class="">
+            <!-- class="d-flex flex-wrap row"  -->
+            <div class="d-flex flex-wrap gap-3">
+
+                <app-game-card class="" *ngFor="let game of filteredGames" [currentGame]="game"></app-game-card>
+
+            </div>
+            <h2 *ngIf="filteredGames?.length === 0">No games found!!!</h2>
+        </div>
+
+    </div>
+
+    
+
+</div>

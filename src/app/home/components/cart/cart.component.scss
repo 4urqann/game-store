@@ -1,3 +1,29 @@
+body {
+  color: white;
+}
+
+h1 {
+  color: white;
+}
+
 .btn-success {
     z-index: 10;
 }
+
+.back {
+    height: 30px;
+    width: 30px;
+    color: rgb(191, 191, 191);
+    border: 2px solid white;
+    border-radius: 50px;
+    
+  }
+  
+  .back:hover {
+    cursor: pointer;
+  }
+
+//   .flex-item {
+//     height: 300px;
+//     width: 300px;
+//   }

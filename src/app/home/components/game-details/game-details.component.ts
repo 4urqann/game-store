@@ -16,20 +16,24 @@ export class GameDetailsComponent implements OnInit {
   constructor(
     private Http: HttpClient,
     private route: ActivatedRoute,
-    private cartService: CartService,
-    public dialog: MatDialog
+    private cartService: CartService
   ) { }
   BaseURL: string = "http://localhost:3000/games";
 
   game!: Game;
+  alreadyOwned: boolean = false;
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
       console.log(params.id);
       this.getGame(params.id);
     });
-
   }
+
+  // isGameOwned() {
+  //   const alreadyOwned = this.cartService.gamesOwned.find((ownedGame) => this.game.id === ownedGame.id);
+  //   return alreadyOwned;
+  // }
 
   getGame(id: string) {
     this.Http.get<Game>(this.BaseURL + "/" + id)
@@ -37,12 +41,21 @@ export class GameDetailsComponent implements OnInit {
         this.game = game;
         console.log(game);
         this.doesGameExist();
+        this.isGameOwned();
       });
   }
 
   doesGameExist(): boolean {
     const foundGame = this.cartService.addedGames.find((game) => game.id === this.game.id);
     return foundGame === undefined ? false : true;
+  }
+
+  isGameOwned() {
+    this.cartService.gamesOwned.forEach(ownedGame => {
+      if (this.game.id === ownedGame.id) {
+        this.alreadyOwned = true;
+      }
+    });
   }
 
   onAdd() {
@@ -55,14 +68,8 @@ export class GameDetailsComponent implements OnInit {
   }
 
   onBuy() {
-      const dialogRef = this.dialog.open(ConfirmationPopupComponent);
-      dialogRef.componentInstance.confirMsg = `Are you sure you want to proceed with this purchase ${this.game.price}?` 
-      dialogRef.afterClosed().subscribe(isConfirm => {
-        if (isConfirm) { 
-          console.log(isConfirm);
-          this.cartService.gamesOwned.push(this.game);
-        } 
-      });
+    this.cartService.singlePurchase(this.game);
   }
+  
 
 }

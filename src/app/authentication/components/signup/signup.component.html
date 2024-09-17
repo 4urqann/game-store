@@ -3,53 +3,82 @@
     <input matInput placeholder="Ex. Pizza" value="Sushi">
   </mat-form-field> -->
 <mat-card>
-    <mat-card-title><h4>Signup</h4></mat-card-title>
+    <mat-card-title>
+        <h4>Signup</h4>
+    </mat-card-title>
     <mat-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="submit()">
             <div formGroupName="profile">
                 <div class="inputField">
                     <mat-form-field>
                         <mat-label>Username</mat-label>
-                        <input 
-                        matInput 
-                        type="text" 
-                        placeholder="Username"
-                        formControlName="username">
+                        <input matInput type="text" placeholder="Username" formControlName="username">
                     </mat-form-field>
                 </div>
-                <div class="inputField">
-                    <mat-form-field>
-                        <input 
-                        matInput 
-                        type="password" 
-                        placeholder="password"
-                        formControlName="password">
-                    </mat-form-field>
+
+                {{ username?.errors | json}}
+
+                <div *ngIf="username?.touched && username?.invalid">
+                    <small *ngIf="username?.errors?.['required']" class="text-danger">
+                        username is mandatory
+                    </small>
+                    <br>
+                    <small *ngIf="username?.errors?.['minlength']" class="text-danger">
+                        username should contain atleast 6 letters
+                    </small>
+                    <br>
+                    <small *ngIf="username?.errors?.['usernameExist']" class="text-danger">
+                        username {{ username?.errors?.['usernameExist'].value }} already exists!!!
+                    </small>
                 </div>
+
+                <!-- <div *ngIf="password !== password2">
+                    <small class="text-danger">
+                        passwords should match
+                    </small>
+                </div> -->
+
+                <div formGroupName="security" > 
+                    <div class="inputField">
+                        
+                        <mat-form-field>
+                            <input matInput type="password" placeholder="password" formControlName="password">
+                        </mat-form-field>
+                        
+                    </div>
+                    <div class="inputField">
+                        
+                        <mat-form-field>
+                            <input matInput type="password" placeholder="confirm password" formControlName="confirmPassword">
+                        </mat-form-field>
+                        
+                    </div>
+                </div>
+                    
             </div>
-        
+
             <div class="inputField">
                 <mat-form-field>
                     <mat-label>Select</mat-label>
-                    <mat-select >
+                    <mat-select>
                         <mat-option *ngFor="let gender of genders" value="gender">
                             {{ gender }}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-                
+
             <div class="button">
                 <div class="login-button">
-                    <button  routerLink="" mat-button type="button">Login</button>
+                    <button routerLink="" mat-button type="button">Login</button>
                 </div>
-    
+
                 <div class="signup-button">
-                    <button mat-button type="submit">Signup</button>
+                    <button [disabled]="loginForm.invalid" mat-button type="submit">Signup</button>
                 </div>
             </div>
-        
+
         </form>
-       
+
     </mat-card-content>
 </mat-card>

@@ -1,24 +1,75 @@
+// .example-card {
+//     max-width: 200px;
+//     max-height: 420px;
+//     margin-bottom: 20px;
+//   }
+
+//   .example-header-image {
+//     background-size: cover;
+//     left: 50px;
+//   }
+
+//   .main-img {
+//       border-radius: 8px;
+//       padding: 8px;
+//       height: 255px;
+//       // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+//   }
+
+//   .price {
+//     font-size: 1rem;
+//     font-weight: bold;
+//   }
+
+//   .main-img:hover {
+//       opacity: 0.7;
+//       // filter: brightness(110%);
+//   }
 
 
-.example-card {
-    max-width: 200px;
-    max-height: 400px;
+img {
+  width: 100%;
+  height: 280px;
+  aspect-ratio: 16/9;
+}
+
+.game-box {
+  width: 230px;
+  height: 390px;
+  background-color: rgb(40, 39, 39);
+  color: white;
+  // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    // box-shadow: rgb(255, 255, 255) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    // box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
+
+    img {
+      transform: scale(1.05);
+      transition: all 0.5s ease;
+
+    }
   }
-  
-  .example-header-image {
-    background-image: url('https://i.etsystatic.com/23631389/r/il/da40d6/2655429430/il_fullxfull.2655429430_ijir.jpg');
-    background-size: cover;
-    left: 50px;
-  }
-  
-  .main-img {
-      border-radius: 8px;
-      padding: 8px;
-      height: 300px;
-      // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  
-  .main-img:hover {
-      opacity: 0.7;
-      // filter: brightness(110%);
-  }
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.catagory {
+  font-size: 14px;
+  color: gray;
+}
+
+.price {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 650;
+}

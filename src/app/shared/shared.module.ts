@@ -8,17 +8,20 @@ import { ConfirmationPopupComponent } from './components/confirmation-popup/conf
 
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatBadgeModule} from '@angular/material/badge';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 const angMaterial = [
   MatDialogModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatBadgeModule
 ]
 
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, ConfirmationPopupComponent],
+  declarations: [HeaderComponent, ConfirmationPopupComponent, SearchBarComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -28,6 +31,7 @@ const angMaterial = [
   ],
   exports: [
     HeaderComponent,
+    SearchBarComponent,
     FormsModule,
     ReactiveFormsModule,
   ]

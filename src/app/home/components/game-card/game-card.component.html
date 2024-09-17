@@ -1,12 +1,46 @@
-<mat-card (click)="details(currentGame.id)" class="example-card" appearance="outlined">
+<!-- <mat-card (click)="details(currentGame.id)" class="col-sm-3 d-flex flex-column" appearance="outlined">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
+      <img [src]="currentGame.headimg" mat-card-avatar class="example-header-image">
       <mat-card-title>{{currentGame.title}}</mat-card-title>
       <mat-card-subtitle>{{currentGame.catagory}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-subtitle>Price: ₹{{currentGame.price}}</mat-card-subtitle>
+    <mat-card-subtitle class="price" >Price: {{currentGame.price | currency: 'INR' : 'symbol' : '.2-2'}}</mat-card-subtitle>
     <img class="main-img" mat-card-image [src]="currentGame.mainimg" alt="Photo of a Shiba Inu">
-</mat-card>
+
+    <mat-card-actions>
+      <button (click)="directBuy()" mat-raised-button >Buy</button>
+      <button (click)="dirCart()" class="btn btn-primary" >Add to Cart</button>
+    </mat-card-actions>
+
+</mat-card> -->
+
+
+
+
+<div (click)="details(currentGame.id)" class="d-flex flex-column game-box">
+
+  <!-- image section  -->
+  <section >
+    <img [src]="currentGame.mainimg">
+  </section>
+
+  <!-- details section -->
+  <section class="d-flex flex-column p-3 h-100 justify-content-between" style="gap: 15px 0;">
+    <div class="d-flex flex-column">
+      <span class="title">{{currentGame.title}}</span>
+      <span class="catagory">{{currentGame.catagory}}</span>
+    </div>
+    <div class="price flex-column">{{currentGame.price | currency: 'INR' : 'symbol' : '.2-2'}}</div>
+  </section>
+
+  <!-- <section class="d-flex w-100 justify-content-around">
+    <button (click)="directBuy()" mat-raised-button>Buy</button>
+    <button (click)="dirCart()" class="btn btn-primary">Add to Cart</button>
+  </section> -->
+
+
+
+</div>
 
 
 

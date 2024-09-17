@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   FormsModule,
   ReactiveFormsModule,
   FormGroup,
   FormControl,
-  Validators
+  Validators,
+  AbstractControl
 } from "@angular/forms";
 
+// import { usernameValidator } from "../../username.validator";
 import { User } from "../../user.model";
-import { Router } from '@angular/router';
+// import { passwordValidator } from '../../password.validator';
 
 
 @Component({
@@ -22,14 +25,42 @@ export class SignupComponent {
   baseURL: string = "http://localhost:3000/users"
 
   constructor(private http: HttpClient, private router: Router) {
+    console.log(this.loginForm);
+
+    this.loginForm.valueChanges.subscribe(() => {
+      console.log(this.loginForm.get(['profile', 'username']));
+    });
+
   }
 
   loginForm: FormGroup = new FormGroup({
-    "profile": new FormGroup({
-      "username": new FormControl(null, Validators.required),
-      "password": new FormControl(null, Validators.required)
-    })
+    profile: new FormGroup({
+      username: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+
+      "security": new FormGroup<any>({
+      "password": new FormControl(null, [Validators.required]),
+      "confirmPassword": new FormControl(null, [Validators.required]),
+    }
+    // , { validators: passwordValidator }
+    )
+
+    }),
+    
   });
+
+  // get password(): AbstractControl | null {
+  //   return this.loginForm.get(['profile', 'password'])                                
+  // }
+
+  // get password2(): AbstractControl | null {
+  //   return this.loginForm.get(['profile', 'confirmPassword'])
+  // }
+
+  get username(): AbstractControl | null {
+    return this.loginForm.get(['profile', 'username']);
+  }
+
+
 
   submit() {
     console.log(this.loginForm);
@@ -38,7 +69,7 @@ export class SignupComponent {
     this.http.post(this.baseURL, this.loginForm.value.profile).subscribe(
       (data) => {
         console.log(data);
-        this.router.navigate(['/homepage']);
+        this.router.navigate(['/home']);
       })
 
     // const data = this.http.get(this.baseURL);
@@ -46,4 +77,6 @@ export class SignupComponent {
 
     // this.http.post('${this.baseURL}',"profile");
   }
+
+
 }

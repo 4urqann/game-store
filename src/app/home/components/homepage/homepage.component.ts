@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Game } from '../../game.model';
 import { FormControl } from '@angular/forms';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-homepage',
@@ -9,7 +10,9 @@ import { FormControl } from '@angular/forms';
   styleUrl: './homepage.component.scss'
 })
 export class HomepageComponent implements OnInit {
-  constructor(private Http: HttpClient) { }
+
+  constructor(private Http: HttpClient, private cart: CartService) { }
+  
   BaseURL: string = "http://localhost:3000/games";
 
   games!: Game[];
@@ -45,5 +48,13 @@ export class HomepageComponent implements OnInit {
       });
   }
 
+  //just a shortcut should remove later
 
+  addAllGames() {
+   let allGames :Game[] = this.cart.addedGames;
+
+   this.games.forEach(game => {
+    allGames.push(game);
+   });
+  }
 }

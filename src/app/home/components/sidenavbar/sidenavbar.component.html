@@ -1,1 +1,35 @@
-<p>sidenavbar works!</p>
+<div class="sidenav vh-100 container d-flex flex-column">
+
+    <div class="d-flex align-items-center gap-3 profile navitem">
+        <p class="fa-solid fa-user fa-xl"></p>
+        <p class="nav-link" (click)="notiService.openSnackbar('Profile Page')" >{{authService.session.username}}</p>
+    </div>
+
+
+    <div class="d-flex flex-column h-75 justify-content-between">
+
+        <div>
+
+            <div class="d-flex align-items-center gap-3 navitem p2" routerLink="/home/cart" >
+                <p [matBadge]='cartService.addedGames.length' class="flex-item fa-solid fa-cart-shopping fa-xl "
+                (click)="notiService.openSnackbar('This is Cart')"></p>
+                <p class="nav-link">Cart</p>
+            </div>
+            
+            <div class="d-flex align-items-center gap-3 navitem "  routerLink="/home/library">
+                <p class="flex-item fa-solid fa-swatchbook fa-xl " (click)="notiService.openSnackbar('This is Library')"></p>
+                <p>Library</p>
+            </div>
+
+        </div>
+            
+        <div class="navitem d-flex align-items-center gap-3">
+            <p class="flex-item fa-solid fa-gear fa-xl"></p>
+            <p>Settings</p>
+        </div>
+
+    </div>
+
+
+
+</div>

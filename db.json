@@ -3,43 +3,22 @@
     {
       "id": "1",
       "username": "Furqan",
-      "password": "123qwert"
+      "password": "123qwert",
+      "pfp": "https://as1.ftcdn.net/v2/jpg/02/30/18/38/1000_F_230183813_qYgzfF0O03ucX1COQ7BVfGhnYKuQpOjV.jpg"
     },
     {
       "id": "2",
       "username": "Faraz",
-      "password": "8910wasd"
-    },
-    {
-      "id": "3f04",
-      "name": "faisal",
-      "password": "sdasdsdsd"
-    },
-    {
-      "id": "15c0",
-      "username": null,
-      "password": null
+      "password": "8910wasd",
+      "pfp": "https://pbs.twimg.com/profile_images/1712983847904874496/aQG_ujPY_400x400.jpg"
     },
     {
       "id": "9651",
       "username": "faiz",
-      "password": "faizuuu"
-    },
-    {
-      "id": "d157",
-      "username": "ddd",
-      "password": "ddd"
-    },
-    {
-      "id": "58e9",
-      "username": "Adnan",
-      "password": "aaddnnaann"
-    },
-    {
-      "id": "e67f",
-      "username": "Roushan",
-      "password": "roushabn"
+      "password": "faizuuu",
+      "pfp": "https://wallpapercave.com/wp/wp9549819.jpg"
     }
+    
   ],
   "games": [
     {
@@ -48,7 +27,8 @@
       "headimg": "https://i.etsystatic.com/23631389/r/il/da40d6/2655429430/il_fullxfull.2655429430_ijir.jpg",
       "mainimg": "https://cdn.europosters.eu/image/350/posters/playstation-god-of-war-i116582.jpg",
       "discription": "In God of War, players control Kratos, a Spartan warrior who is sent by the Greek gods to kill Ares, the god of war.",
-      "price": 1000
+      "price": 1000,
+      "id": "4190"
     },
     {
       "title": "Far Cry 6",
@@ -56,15 +36,17 @@
       "headimg": "https://cdn2.steamgriddb.com/icon/680f0fc378c4abff9d8f271c95e799c3/32/256x256.png",
       "mainimg": "https://image.api.playstation.com/vulcan/img/rnd/202106/0722/4MxzDZKZwtEWyMWZghvwd7bQ.jpg",
       "discription": "Gameplay focuses on combat and exploration, players fight enemy soldiers and dangerous wildlife using a wide array of weapons and gadgets.",
-      "price": 600
+      "price": 600,
+      "id": "a9a4"
     },
     {
       "title": "Call of Duty",
       "catagory": "Shooting",
       "headimg": "https://e0.pxfuel.com/wallpapers/45/501/desktop-wallpaper-call-of-duty-logo-call-of-duty-minimalist.jpg",
       "mainimg": "https://i.pinimg.com/originals/13/2a/be/132abe929b7bde5319784511ae7c4545.jpg",
-      "discription": "The game's focused on the Second World War,a franchise of several multiplayer first-person shooter games published by Activision.",
-      "price": 800
+      "discription": "Call of Duty®: Modern Warfare® II drops players into an unprecedented global conflict that features the return of the iconic Operators of Task Force 141. From small-scale, high-stakes infiltration tactical ops to highly classified missions, players will deploy alongside friends in a truly immersive experience.",
+      "price": 800,
+      "id": "cc4a"
     },
     {
       "title": "GTA-V",
@@ -72,7 +54,8 @@
       "headimg": "https://i.pinimg.com/736x/1c/bf/4c/1cbf4c42001ca7250f5096cc2d284ba5.jpg",
       "mainimg": "https://m.media-amazon.com/images/I/51ejVht7-ML._AC_UF1000,1000_QL80_.jpg",
       "discription": "Grand Theft Auto V is an action-adventure game played from either a third-person or first-person perspective.",
-      "price": 500
+      "price": 500,
+      "id": "5d46"
     },
     {
       "title": "CSGO",
@@ -80,7 +63,8 @@
       "headimg": "https://c4.wallpaperflare.com/wallpaper/983/120/28/counter-strike-contra-csgo-wallpaper-preview.jpg",
       "mainimg": "https://myhotposters.com/cdn/shop/products/mL3926_1024x1024.jpg?v=1574110218",
       "discription": "The game pits two teams, Terrorists and Counter-Terrorists, against each other in different objective-based game modes.",
-      "price": 0
+      "price": 0,
+      "id": "b297"
     },
     {
       "title": "A Plague Tale Requiem",
@@ -88,7 +72,8 @@
       "headimg": "https://cdn2.steamgriddb.com/icon/5ea2f0a1257f0d9c2c243d7d4047aa8f.ico",
       "mainimg": "https://store-images.s-microsoft.com/image/apps.4956.13537574391772742.e387dd56-e35c-40fb-bc0c-c0c1decef3a1.f27cfe2b-b8b2-47f3-a92e-0eebe096efa2",
       "discription": "A Plague Tale: Requiem is the sequel to the award-winning adventure, A Plague Tale: Innocence.",
-      "price": 750
+      "price": 750,
+      "id": "c0ef"
     },
     {
       "title": "Assassins Creed Odyssey",
@@ -96,7 +81,8 @@
       "headimg": "https://i.pinimg.com/736x/7a/e0/18/7ae0189baea79bf99ddb615efa6835c6.jpg",
       "mainimg": "https://cdn.europosters.eu/image/1300/posters/assassins-creed-odyssey-one-sheet-i83432.jpg",
       "discription": "Assassin's Creed Odyssey is an action-adventure game that tells the story of the Peloponnesian War between Athens and Sparta from 431–422 BC.",
-      "price": 1200
+      "price": 1200,
+      "id": "182b"
     },
     {
       "title": "Need for Speed Unbound",
@@ -104,7 +90,8 @@
       "headimg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyK8lVivjzAt1ilxRWKFUrQ6izBehucr6ZyQ&s",
       "mainimg": "https://upload.wikimedia.org/wikipedia/en/d/db/Need_for_Speed_Unbound.png",
       "discription": "Need for Speed Unbound is a racing game set in a fictional city called Lakeshore City, which is based on Chicago.",
-      "price": 2000
+      "price": 2000,
+      "id": "66cd"
     },
     {
       "title": "resident evil 7: Biohazard",
@@ -112,7 +99,8 @@
       "headimg": "https://w0.peakpx.com/wallpaper/389/435/HD-wallpaper-resident-evil-7-biohazard-resident-evil-7-games-2016-games.jpg",
       "mainimg": "https://preview.redd.it/xq7xyf70ln271.jpg?width=640&crop=smart&auto=webp&s=505abd5b96e0de534854c777f258cf62abe99ff6",
       "discription": "Resident Evil 7: Biohazard is a 2017 survival horror game developed and published by Capcom.",
-      "price": 800
+      "price": 800,
+      "id": "d163"
     },
     {
       "title": "Formula1 24",
@@ -120,7 +108,8 @@
       "headimg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv6NLvqH6cC-R-FW8u9L6tmm3gE9mj9I7H0Q&s",
       "mainimg": "https://prod-printler-front-as.azurewebsites.net/media/photo/141022.jpg?mode=crop&width=727&height=1024&rnd=0.0.1",
       "discription": "EA Sports F1® 24 is a racing video game developed by Codemasters and published by EA Sports.",
-      "price": 1500
+      "price": 1500,
+      "id": "58c0"
     }
   ]
 }

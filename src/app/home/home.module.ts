@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
+import { MatBadgeModule } from "@angular/material/badge";
 
 
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -13,9 +14,11 @@ import { GameDetailsComponent } from './components/game-details/game-details.com
 import { CartComponent } from './components/cart/cart.component';
 import { LibraryComponent } from './components/library/library.component';
 import { SharedModule } from "../shared/shared.module";
+import { ProfileModule } from "../profile/profile.module";
 
 const AngMaterial = [
     MatCardModule,
+    MatBadgeModule,
     MatButtonModule
 ]
 
@@ -23,7 +26,7 @@ const routes: Routes = [
     { path: '', component: HomepageComponent },
     { path: 'game-details/:id', component: GameDetailsComponent },
     { path: 'cart', component: CartComponent },
-    { path: 'library', component: LibraryComponent }
+    { path: 'library', component: LibraryComponent },
     // { path: 'sidenavbar', component: SidenavbarComponent },
 ]
 
@@ -40,6 +43,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         CommonModule,
         SharedModule,
+        ProfileModule,
         AngMaterial
     ],
     exports: []

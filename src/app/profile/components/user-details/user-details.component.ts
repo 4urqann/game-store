@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProfileService } from '../../../shared/services/profile.service';
 
 @Component({
   selector: 'app-user-details',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './user-details.component.scss'
 })
 export class UserDetailsComponent {
-
+ 
+  constructor(public profileService: ProfileService) {}
+  
 }
