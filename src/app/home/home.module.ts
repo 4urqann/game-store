@@ -5,21 +5,25 @@ import { RouterModule, Routes } from "@angular/router";
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { MatBadgeModule } from "@angular/material/badge";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
+import { SidenavbarComponent } from '../shared/components/sidenavbar/sidenavbar.component';
 import { GameCardComponent } from './components/game-card/game-card.component';
 import { GameDetailsComponent } from './components/game-details/game-details.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LibraryComponent } from './components/library/library.component';
 import { SharedModule } from "../shared/shared.module";
 import { ProfileModule } from "../profile/profile.module";
+import { CartCardComponent } from './components/cart-card/cart-card.component';
+import { LibraryCardComponent } from './components/library-card/library-card.component';
 
 const AngMaterial = [
     MatCardModule,
     MatBadgeModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressSpinnerModule
 ]
 
 const routes: Routes = [
@@ -33,11 +37,12 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         HomepageComponent,
-        SidenavbarComponent,
         GameCardComponent,
         GameDetailsComponent,
         CartComponent,
-        LibraryComponent
+        LibraryComponent,
+        CartCardComponent,
+        LibraryCardComponent
     ],
     imports: [
         RouterModule.forChild(routes),

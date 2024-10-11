@@ -1,44 +1,70 @@
+<div class="d-flex flex-column gap-4">
 
-<div class="d-flex row">
+    <div class="d-flex justify-content-center align-items-baseline gap-1 ">
 
-    <div class="d-flex col-2">
-        <app-sidenavbar></app-sidenavbar>
-    </div>
-
-    <div class=" flex-column container col-9">
-
-        <div class="d-flex justify-content-center align-items-baseline gap-1 ">
-
-            <div class="d-flex ">
-                <form action="">
-                    <input class="searchbar" type="text" placeholder="filter..." [formControl]="filterControl">
-                </form>
-            </div>
-
-            <div class="d-flex ">
-                <i class="fa-solid fa-magnifying-glass searchicon"></i>
-            </div>
-
+        <div class="d-flex ">
+            <form action="">
+                <input class="searchbar" type="text" placeholder="filter..." [formControl]="filterControl">
+            </form>
         </div>
 
-        <!-- <app-search-bar></app-search-bar> -->
-
-        <button (click)="addAllGames()" class="btn btn-primary">Add all Games</button>
-
-        <h1>Games</h1>
-
-        <div class="">
-            <!-- class="d-flex flex-wrap row"  -->
-            <div class="d-flex flex-wrap gap-3">
-
-                <app-game-card class="" *ngFor="let game of filteredGames" [currentGame]="game"></app-game-card>
-
-            </div>
-            <h2 *ngIf="filteredGames?.length === 0">No games found!!!</h2>
+        <div class="d-flex ">
+            <i class="fa-solid fa-magnifying-glass searchicon"></i>
         </div>
 
     </div>
+
+    <div id="carouselExampleAutoplaying" class="d-flex w-100 justify-content-center carousel slide" data-bs-ride="carousel">
+        <div class="d-flex carousel-inner">
+          <div routerLink="/home/game-details/55bm" class="carousel-item active">
+            <img src="https://deltiasgaming.com/wp-content/uploads/2024/06/Black-Myth-Wukong-title-logo.jpg" class="" alt="...">
+          </div>
+          <div routerLink="/home/game-details/66cd" class="carousel-item">
+            <img src="https://cdn.wccftech.com/wp-content/uploads/2022/12/WCCFneedforspeedunbound6.jpg" class="" alt="...">
+          </div>
+          <div routerLink="/home/game-details/82bm" class="carousel-item">
+            <img src="https://wallpapercave.com/wp/wp1835404.jpg" class="" alt="...">
+          </div>
+          <div routerLink="/home/game-details/fc25" class="carousel-item">
+            <img src="https://images7.alphacoders.com/137/1377537.jpg" class="" alt="...">
+          </div>
+          <div routerLink="/home/game-details/a9a4" class="carousel-item">
+            <img src="https://wallpapers.com/images/featured/far-cry-6-nq4t0zprkse1trgt.jpg" class="" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+    <!-- <button routerLink="/home/cart" (click)="addAllGames()" class="btn btn-primary">Add all Games</button> -->
 
     
+    <div class="d-flex flex-column gap-4">
+
+        <div>
+            <h1>Games</h1>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3 p-5">
+
+            <app-game-card class="game-box" *ngFor="let game of filteredGames" [currentGame]="game"></app-game-card>
+
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center">
+
+            <h2 *ngIf="filteredGames?.length === 0">No games found!!!</h2>
+
+        </div>
+
+    </div>
 
 </div>

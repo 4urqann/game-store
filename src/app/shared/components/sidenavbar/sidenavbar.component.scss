@@ -1,5 +1,5 @@
 .sidenav {
-  background-color: rgb(42, 42, 42);
+  background-color: rgb(16, 16, 16);
   color: white;
   height: 100vh;
   width: 240px;
@@ -8,13 +8,13 @@
 }
 
 .navitem {
-  height: 50px;
+  height: 65px;
   padding-left: 5px;
 }
 
 .navitem:hover {
   border-radius: 4px;
-  background-color: grey;
+  background-color: rgb(52, 52, 52);
   cursor: pointer;
 }
 

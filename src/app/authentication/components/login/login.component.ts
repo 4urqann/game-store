@@ -16,7 +16,8 @@ export class LoginComponent {
   constructor(private http: HttpClient,
     private router: Router,
     private cartService: CartService,
-    private authService: AuthenticationService) { }
+    private authService: AuthenticationService,
+    private profileService: ProfileService) { }
 
   baseURL: string = "http://localhost:3000/users";
 
@@ -28,32 +29,42 @@ export class LoginComponent {
   });
 
   submit() {
-    let users!: User[];
+    let users: User[] = this.profileService.users;
+
     console.log(this.loginForm);
     console.log(this.loginForm.value);
 
-    this.http.get<User[]>(this.baseURL).subscribe((data: User[]) => {
-      users = data;
-      console.log(users);
+    users.forEach(user => {
 
-      users.forEach(user => {
-        console.log(user);
-        if (this.loginForm.value.username === user.username && this.loginForm.value.password === user.password) {
-          console.log('success');
+      if (this.loginForm.value.username === user.username && this.loginForm.value.password === user.password) {
+        console.log('success');
 
-          this.authService.session = user;
+        this.authService.session = user;
 
-          // this.userProfile = this.loginForm.value;  //storing the current users, username & password
-          // console.log(this.userProfile);
-          // this.profileService.getUser(this.userProfile);
+        this.router.navigate(['home']);
 
-          this.router.navigate(['home']);
-
-        } else { }
-
-      });
+      } else { }
 
     });
+
+    // this.http.get<User[]>(this.baseURL).subscribe((data: User[]) => {
+    //   users = data;
+    //   console.log(users);
+
+    //   users.forEach(user => {
+    //     console.log(user);
+    //     if (this.loginForm.value.username === user.username && this.loginForm.value.password === user.password) {
+    //       console.log('success');
+
+    //       this.authService.session = user;
+
+    //       this.router.navigate(['home']);
+
+    //     } else { }
+
+    //   });
+
+    // });
 
   }
 

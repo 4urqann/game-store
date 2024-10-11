@@ -7,9 +7,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationPopupComponent } from './components/confirmation-popup/confirmation-popup.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatBadgeModule } from '@angular/material/badge';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 
 const angMaterial = [
   MatDialogModule,
@@ -21,7 +23,7 @@ const angMaterial = [
 
 
 @NgModule({
-  declarations: [HeaderComponent, ConfirmationPopupComponent, SearchBarComponent],
+  declarations: [HeaderComponent, ConfirmationPopupComponent, SearchBarComponent, MenuComponent, SidenavbarComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -34,6 +36,7 @@ const angMaterial = [
     SearchBarComponent,
     FormsModule,
     ReactiveFormsModule,
+    SidenavbarComponent
   ]
 })
 export class SharedModule { }

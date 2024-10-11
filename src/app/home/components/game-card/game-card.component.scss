@@ -35,24 +35,40 @@ img {
 
 .game-box {
   width: 230px;
-  height: 390px;
+  height: 420px;
   background-color: rgb(40, 39, 39);
   color: white;
-  // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.3s ease;
 
   &:hover {
-    // box-shadow: rgb(255, 255, 255) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    // box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
+    background-color: rgb(75, 75, 75);
+    cursor: pointer;
 
     img {
       transform: scale(1.05);
       transition: all 0.5s ease;
-
     }
   }
+}
+
+.sub-head {
+  color: azure;
+  font-size: 1.5rem;
+}
+
+.sub-text {
+  font-size: 1rem;
+  color: rgb(167, 167, 167);
+  font-weight: 600;
+  margin: 0;
+}
+
+.sub-info {
+  font-size: 1rem;
+  color: white;
+  font-weight: 400;
 }
 
 .fs-16 {

@@ -12,6 +12,8 @@ import {
 
 // import { usernameValidator } from "../../username.validator";
 import { User } from "../../user.model";
+import { ProfileService } from '../../../shared/services/profile.service';
+import { AuthenticationService } from '../../authentication.service';
 // import { passwordValidator } from '../../password.validator';
 
 
@@ -24,7 +26,11 @@ export class SignupComponent {
   genders = ['male', 'female']
   baseURL: string = "http://localhost:3000/users"
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient,
+    private profileService: ProfileService,
+    private router: Router,
+    private authService: AuthenticationService) { 
+
     console.log(this.loginForm);
 
     this.loginForm.valueChanges.subscribe(() => {
@@ -33,20 +39,20 @@ export class SignupComponent {
 
   }
 
-  loginForm: FormGroup = new FormGroup({
-    profile: new FormGroup({
-      username: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+loginForm: FormGroup = new FormGroup({
+  profile: new FormGroup({
+    username: new FormControl(null, [Validators.required, Validators.minLength(6)]),
 
-      "security": new FormGroup<any>({
+    "security": new FormGroup<any>({
       "password": new FormControl(null, [Validators.required]),
       "confirmPassword": new FormControl(null, [Validators.required]),
     }
-    // , { validators: passwordValidator }
+      // , { validators: passwordValidator }
     )
 
-    }),
-    
-  });
+  }),
+
+});
 
   // get password(): AbstractControl | null {
   //   return this.loginForm.get(['profile', 'password'])                                
@@ -57,26 +63,28 @@ export class SignupComponent {
   // }
 
   get username(): AbstractControl | null {
-    return this.loginForm.get(['profile', 'username']);
-  }
+  return this.loginForm.get(['profile', 'username']);
+}
 
 
 
-  submit() {
-    console.log(this.loginForm);
-    console.log(this.loginForm.value);
+submit() {
+  console.log(this.loginForm);
+  console.log(this.loginForm.value.profile.username);
 
-    this.http.post(this.baseURL, this.loginForm.value.profile).subscribe(
-      (data) => {
-        console.log(data);
-        this.router.navigate(['/home']);
-      })
+  this.profileService.users.push(this.loginForm.value.profile);
+  this.router.navigate(['/home']);
 
-    // const data = this.http.get(this.baseURL);
-    // console.log(data);
+  this.authService.session = this.loginForm.value.profile;
+  
 
-    // this.http.post('${this.baseURL}',"profile");
-  }
+  // this.http.post(this.baseURL, this.loginForm.value.profile).subscribe(
+  //   (data) => {
+    //     console.log(data);
+    //     this.router.navigate(['/home']);
+  //   });
+
+}
 
 
 }

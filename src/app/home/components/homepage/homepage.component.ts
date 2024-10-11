@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Game } from '../../game.model';
 import { FormControl } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
@@ -15,15 +15,16 @@ export class HomepageComponent implements OnInit {
   
   BaseURL: string = "http://localhost:3000/games";
 
-  games!: Game[];
+  games = this.cart.games;
   private _filterText: string = '';
   filteredGames!: Game[];
 
-  filterControl: FormControl = new FormControl('');
+  @Input() filterControl: FormControl = new FormControl('');
 
 
   ngOnInit(): void {
-    this.getAllGames();
+    // this.getAllGames();
+    this.filteredGames = this.games;
 
     this.filterControl.valueChanges.subscribe((currentValue: any) => {
       console.log(currentValue);
@@ -33,20 +34,20 @@ export class HomepageComponent implements OnInit {
         this.filteredGames = this.games.filter((game) => {
           return game.title.toLowerCase().includes(currentValue.toLowerCase()) 
           || game.catagory.toLowerCase().includes(currentValue.toLowerCase());
-        })
+        });
 
       }
-    })
+    });
   }
 
-  getAllGames() {
-    this.Http.get<Game[]>(this.BaseURL)
-      .subscribe((games: Game[]) => {
-        this.games = games;
-        this.filteredGames = this.games;
-        console.log(this.games);
-      });
-  }
+  // getAllGames() {
+  //   this.Http.get<Game[]>(this.BaseURL)
+  //     .subscribe((games: Game[]) => {
+  //       this.games = games;
+  //       this.filteredGames = this.games;
+  //       console.log(this.games);
+  //     });
+  // }
 
   //just a shortcut should remove later
 

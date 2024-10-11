@@ -1,0 +1,56 @@
+.card {
+    height: 500px;
+    width: 230px;
+    background-color: rgb(28, 28, 28);
+    border-radius: 6px;
+    color: azure;
+}
+
+.banner>img {
+    height: 260px;
+    width: 200px;
+    border-radius: 4px;
+}
+
+.banner :hover {
+    cursor: pointer;
+}
+
+.genere-tile {
+    color: azure;
+    background-color: rgb(56, 56, 56);
+    padding: 0px 5px 3px 5px;
+    border-radius: 3px;
+}
+
+.details {
+    height: 100%;
+}
+
+.sub-head {
+    color: azure;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.sub-text {
+    font-size: 1rem;
+    color: rgb(167, 167, 167);
+    font-weight: 600;
+    margin: 0;
+}
+
+.sub-info {
+    font-size: 1rem;
+    color: white;
+    font-weight: 400;
+}
+
+.summary {
+    color: azure;
+}
+
+.controls:hover {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}

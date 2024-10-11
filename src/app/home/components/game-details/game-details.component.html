@@ -1,92 +1,57 @@
-<div class="row">
+<div class="d-flex">
 
-  <div class="col-2 ">
-    <app-sidenavbar></app-sidenavbar>
-  </div>
 
-  <div class="col-9 ">
+  <div class="container d-flex flex-column gap-5">
 
     <div class="back d-flex align-items-center" routerLink="/home">
-      <i class="fa-solid fa-chevron-left"></i>
+      <i class="fa-solid fa-angles-left fa-xl" style="color: #ffae00;"></i>
     </div>
 
-    <div class="d-flex container">
+    <div>
+      <h1>{{gameOpen?.title}}</h1>
 
-      <div class="flex-column d-flex justify-content-start" style="gap: 20px;">
+      <div class="d-flex align-items-baseline gap-2">
 
-        <div>
-          <h1>{{game?.title}}</h1>
+        <div class="d-flex">
+          <div class="stars">
+            <form class="d-flex flex-row-reverse" action="">
 
-          <div class="d-flex flex-row">
-            <div class="d-flex flex-column">
-              <h3 class="catagory">{{game?.catagory}}</h3>
-            </div>
+              <input class="star star-5" id="star-5" type="radio" name="star" />
+              <label class="star star-5" for="star-5"></label>
+              <input class="star star-4" id="star-4" type="radio" name="star" />
+              <label class="star star-4" for="star-4"></label>
+              <input class="star star-3" id="star-3" type="radio" name="star" />
+              <label class="star star-3" for="star-3"></label>
+              <input class="star star-2" id="star-2" type="radio" name="star" />
+              <label class="star star-2" for="star-2"></label>
+              <input class="star star-1" id="star-1" type="radio" name="star" />
+              <label class="star star-1" for="star-1"></label>
 
-
-            <div class="container d-flex flex-column">
-
-              <div class="d-flex flex-row-reverse">
-                <div class="col-md-12">
-                  <div class="stars">
-                    <form action="">
-
-                      <input class="star star-5" id="star-5" type="radio" name="star" />
-                      <label class="star star-5" for="star-5"></label>
-                      <input class="star star-4" id="star-4" type="radio" name="star" />
-                      <label class="star star-4" for="star-4"></label>
-                      <input class="star star-3" id="star-3" type="radio" name="star" />
-                      <label class="star star-3" for="star-3"></label>
-                      <input class="star star-2" id="star-2" type="radio" name="star" />
-                      <label class="star star-2" for="star-2"></label>
-                      <input class="star star-1" id="star-1" type="radio" name="star" />
-                      <label class="star star-1" for="star-1"></label>
-
-                    </form>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
+            </form>
           </div>
-
         </div>
 
-        <p>{{game?.discription}}</p>
-
-        <div class="d-flex align-items-center" style="gap: 15px;">
-
-          <div>
-            <button *ngIf="alreadyOwned" class="btn btn-success">Owned</button>
-            <button *ngIf="!alreadyOwned" (click)="onBuy()" class="btn btn-success">Buy</button>
-          </div>
-
-          <div>
-            <button *ngIf="doesGameExist()" (click)="onRemove()" class="btn btn-primary">Remove from cart</button>
-            <button *ngIf="!doesGameExist()" (click)="onAdd()" class="btn btn-primary">Add to cart</button>
-          </div>
-
-          <div class="price">
-            <p>Price</p>
-            <h4>{{game?.price | currency: 'INR' : 'symbol' : '.2-2'}}</h4>
-          </div>
-
+        <div class="d-flex">
+          <h3 class="sub-text">{{gameOpen?.catagory}}</h3>
         </div>
 
       </div>
+    </div>
 
-      <div>
+    <div class="d-flex">
+
+      <div class="d-flex flex-column gap-3">
 
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src={{game.mainimg}} class="d-block w-100" alt="...">
+              <img src={{gameOpen.dispimg1}} class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-              <img src={{game.mainimg}} class="d-block w-100" alt="...">
+              <img src={{gameOpen.dispimg2}} class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-              <img src={{game.mainimg}} class="d-block w-100" alt="...">
+              <img src={{gameOpen.dispimg3}} class="d-block w-100" alt="...">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
@@ -101,10 +66,328 @@
           </button>
         </div>
 
+        <!-- <div class="d-flex justify-content-center gap-3" style="width: 800px;">
+
+          <div class="prev-image">
+            <img src={{gameOpen.mainimg}} alt="">
+          </div>
+
+          <div class="prev-image">
+            <img src={{gameOpen.mainimg}} alt="">
+          </div>
+
+          <div class="prev-image">
+            <img src={{gameOpen.mainimg}} alt="">
+          </div>
+
+        </div> -->
+
+      </div>
+
+      <div class="d-flex flex-column p-5 gap-5" style="position: fixed; right: 10px; top: 10px;">
+
+        <div>
+          <img style="height: 200px; width: 350px;" src="../../../images/kratos.png" alt="">
+        </div>
+
+        <div class="d-flex flex-column gap-3">
+
+          <div>
+            <span class="genere-tile">Base Game</span>
+          </div>
+
+          <div>
+            <h4 class="sub-head">{{gameOpen.price | currency: 'INR' : 'symbol' : '1.0'}}</h4>
+          </div>
+
+          <div class="d-flex flex-column gap-2">
+
+            <div>
+              <button *ngIf="isGameOwned()" routerLink="/home/library" class="btn btn-success">Owned</button>
+              <button *ngIf="!isGameOwned()" (click)="onBuy()" class="btn btn-success">Buy</button>
+            </div>
+
+            <div *ngIf="!isGameOwned()">
+              <button *ngIf="doesGameExist()" (click)="onRemove()" class="btn btn-primary">Remove from cart</button>
+              <button *ngIf="!doesGameExist()" (click)="onAdd()" class="btn btn-primary">Add to cart</button>
+            </div>
+
+          </div>
+
+          <div class="d-flex flex-column gap-3">
+
+            <section class="d-flex flex-column">
+
+              <span class="d-flex justify-content-between">
+                <p class="sub-text">Developer</p>
+                <p class="sub-info">Game Science</p>
+              </span>
+
+              <div style="width: 100%; border: rgb(57, 57, 57) 1px solid;"></div>
+
+            </section>
+            <section class="d-flex flex-column">
+
+              <span class="d-flex justify-content-between">
+                <p class="sub-text">Publisher</p>
+                <p class="sub-info">Game Science</p>
+              </span>
+
+              <div style="width: 100%; border: rgb(57, 57, 57) 1px solid;"></div>
+
+            </section>
+            <section class="d-flex flex-column">
+
+              <span class="d-flex justify-content-between">
+                <p class="sub-text">Release Date</p>
+                <p class="sub-info">08/20/24</p>
+              </span>
+
+              <div style="width: 100%; border: rgb(57, 57, 57) 1px solid;"></div>
+
+            </section>
+            <section class="d-flex flex-column">
+
+              <span class="d-flex justify-content-between">
+                <p class="sub-text">Platform</p>
+                  <i class="fa-brands fa-windows" style="position: relative; left: 98px; top: 5px; color: aliceblue;"></i>
+                  <p class="sub-info d-flex align-items-center">Windows</p>
+              </span>
+
+              <div style="width: 100%; border: rgb(57, 57, 57) 1px solid;"></div>
+
+            </section>
+
+          </div>
+
+        </div>
 
       </div>
 
     </div>
+
+
+    <div class="discription">
+      <h4>Overview:</h4>
+      <p>{{gameOpen?.discription}}</p>
+    </div>
+
+    <div class="d-flex justify-content-between">
+
+      <div class="d-flex flex-column gap-2">
+
+        <p class="sub-text">Genres</p>
+
+        <div class="d-flex gap-2">
+          <span class="genere-tile">{{gameOpen.genere.at(0)}}</span>
+          <span class="genere-tile">{{gameOpen.genere.at(1)}}</span>
+          <span class="genere-tile">{{gameOpen.genere.at(2)}}</span>
+        </div>
+
+      </div>
+
+      <div style="border: 1px solid rgb(74, 74, 74); height: 70px; position: relative; right: 55px;"></div>
+
+      <div style="position: relative; right: 260px;" class="d-flex flex-column gap-2">
+
+        <p class="sub-text">Features</p>
+
+        <div class="d-flex">
+          <span class="genere-tile">{{gameOpen.features}}</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="d-flex flex-column gap-4">
+
+      <div>
+        <h4 class="sub-head">Respawn Player Rating</h4>
+        <p class="sub-text">Captured from players in the Respawn ecosystem.</p>
+      </div>
+
+      <div class="d-flex align-items-baseline justify-content-center gap-3">
+
+        <p style="font-size: 2.1rem; font-weight: 800; margin: 0px;">{{gameOpen.starRating}}</p>
+
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-star fa-2xl" style="color: #eba000;"></i>
+          <i class="fa-solid fa-star fa-2xl" style="color: #eba000;"></i>
+          <i class="fa-solid fa-star fa-2xl" style="color: #eba000;"></i>
+          <!-- if-3.5 -->
+          <i *ngIf="gameOpen.starRating === '3.5' " class="fa-solid fa-star-half-stroke fa-2xl"
+            style="color: #eba000;"></i>
+          <i *ngIf="gameOpen.starRating === '3.5' " class="fa-regular fa-star fa-2xl" style="color: #eba000;"></i>
+          <!-- if-4 -->
+          <i *ngIf="gameOpen.starRating === '4' " class="fa-solid fa-star fa-2xl" style="color: #eba000;"></i>
+          <i *ngIf="gameOpen.starRating === '4' " class="fa-regular fa-star fa-2xl" style="color: #eba000;"></i>
+          <!-- if-4.5 & 4.8-->
+          <i *ngIf="gameOpen.starRating === '4.5' " class="fa-solid fa-star fa-2xl" style="color: #eba000;"></i>
+          <i *ngIf="gameOpen.starRating === '4.8' " class="fa-solid fa-star fa-2xl" style="color: #eba000;"></i>
+          <i *ngIf="gameOpen.starRating === '4.5' " class="fa-solid fa-star-half-stroke fa-2xl"
+            style="color: #eba000;"></i>
+          <i *ngIf="gameOpen.starRating === '4.8' " class="fa-solid fa-star-half-stroke fa-2xl"
+            style="color: #eba000;"></i>
+          <!-- if-5 -->
+          <i *ngIf="gameOpen.starRating === '5'" class="fa-solid fa-star fa-2xl" style="color: #eba000;"></i>
+          <i *ngIf="gameOpen.starRating === '5'" class="fa-solid fa-star fa-2xl" style="color: #eba000;"></i>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="d-flex flex-column gap-3">
+
+      <div class="d-flex">
+        <h4 class="sub-head">{{gameOpen.title}} Rating & Reviews</h4>
+      </div>
+
+      <div class="d-flex gap-5">
+
+        <div class="d-flex flex-column align-items-center">
+
+          <div class="d-flex align-items-center justify-content-center">
+            <h4 style="position: absolute;" class="sub-head">{{gameOpen.criticRating}}%</h4>
+            <mat-progress-spinner class="example-margin" value={{gameOpen.criticRating}}></mat-progress-spinner>
+          </div>
+
+          <div class="circle"></div>
+
+          <p class="sub-text">Critics Recommend</p>
+
+        </div>
+        <div class="d-flex flex-column align-items-center">
+
+          <div class="d-flex align-items-center justify-content-center">
+            <h4 style="position: absolute;" class="sub-head">81</h4>
+            <mat-progress-spinner class="example-margin" [value]="81"></mat-progress-spinner>
+          </div>
+
+          <div class="circle"></div>
+
+          <p class="sub-text">Top Critic Average</p>
+
+        </div>
+        <div class="d-flex flex-column align-items-center">
+
+          <div class="d-flex align-items-center justify-content-center">
+            <h4 style="position: absolute;" class="sub-head">Strong</h4>
+            <mat-progress-spinner class="example-margin" [value]="75"></mat-progress-spinner>
+          </div>
+
+          <div class="circle"></div>
+
+          <p class="sub-text">Gamers Rating</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="d-flex flex-column gap-3">
+
+      <h4 class="sub-head">{{gameOpen.title}} System Requirements</h4>
+
+      <div class="systeminfo d-flex flex-column p-5 gap-4">
+
+        <section>
+          <h4 class="sub-head">Windows</h4>
+          <div style="width: 105px; border: orange 1px solid;"></div>
+        </section>
+
+        <div class="d-flex justify-content-between gap-3">
+
+          <div class="d-flex flex-column gap-3">
+
+            <h3 class="sub-head">Minimum</h3>
+
+            <section class="d-flex flex-column">
+              <p class="sub-text">OS</p>
+              <p class="sub-info">Windows 10 - 64-Bit (Latest Update).</p>
+            </section>
+            <section class="d-flex flex-column">
+              <p class="sub-text">Processor</p>
+              <p class="sub-info">Intel Core i5-6600K "&#64;" 3.50GHz or AMD Ryzen 5 1600 "&#64;" 3.2 GHZ</p>
+            </section>
+            <section class="d-flex flex-column">
+              <p class="sub-text">Memory</p>
+              <p class="sub-info">8 GB</p>
+            </section>
+            <section class="d-flex flex-column">
+              <p class="sub-text">Storage</p>
+              <p class="sub-info">100 GB</p>
+            </section>
+            <section class="d-flex flex-column">
+              <p class="sub-text">Direct X</p>
+              <p class="sub-info">12 Compatible video card or equivalent (feature level 12_0)</p>
+            </section>
+            <section class="d-flex flex-column">
+              <p class="sub-text">Graphics</p>
+              <p class="sub-info">NVIDIA GeForce GTX 1050 Ti 4GB or AMD Radeon RX 570 4GB</p>
+            </section>
+
+          </div>
+
+          <div class="d-flex flex-column gap-3">
+
+            <h3 class="sub-head">Recommended</h3>
+
+            <section class="d-flex flex-column">
+              <p class="sub-text">Graphics</p>
+              <p class="sub-info">Windows 10 - 64-Bit (Latest Update).</p>
+            </section>
+            <section class="d-flex flex-column">
+              <p class="sub-text">Processor</p>
+              <p class="sub-info">Intel Core i7-6700 "&#64;" 3.40GHz or AMD Ryzen 7 2700X "&#64;" 3.7 GHZ</p>
+            </section>
+            <section class="d-flex flex-column">
+              <p class="sub-text">Memory</p>
+              <p class="sub-info">12 GB</p>
+            </section>
+            <section class="d-flex flex-column">
+              <p class="sub-text">Storage</p>
+              <p class="sub-info">100 GB</p>
+            </section>
+            <section class="d-flex flex-column">
+              <p class="sub-text">Direct X</p>
+              <p class="sub-info">12 Compatible video card or equivalent (feature level 12_0)</p>
+            </section>
+            <section class="d-flex flex-column">
+              <p class="sub-text">Graphics</p>
+              <p class="sub-info">NVIDIA GeForce GTX 1660 or AMD RX 5600 XT</p>
+            </section>
+
+          </div>
+        </div>
+
+        <div class="d-flex flex-column">
+
+          <span class="d-flex flex-column">
+            <p class="sub-text">Login Accounts Required</p>
+            <p class="sub-info">Windows 10 - 64-Bit (Latest Update).</p>
+          </span>
+
+          <span class="d-flex flex-column">
+            <p class="sub-text">Languages Supported</p>
+            <p class="sub-info">TEXT: Arabic, Portuguese - Brazil, Chinese - Simplified, Chinese - Traditional, Czech,
+              Danish, Dutch, English, French, German, Italian, Japanese, Korean, Norwegian, Polish, Portuguese, Russian,
+              Spanish, Latin America, Spanish - Spain, Swedish, Turkish</p>
+            <p class="sub-info">AUDIO: Arabic, Portuguese - Brazil, Chinese - Simplified, Dutch, English, French,
+              German, Italian, Japanese, Korean, Polish, Russian, Spanish - Spain, Spanish - Latin America</p>
+
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
+
+
 
 </div>

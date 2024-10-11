@@ -7,5 +7,7 @@ import { CartService } from '../../services/cart.service';
   styleUrl: './library.component.scss'
 })
 export class LibraryComponent {
-constructor(public cartService: CartService) {}
+
+  constructor(public cartService: CartService) { }
+
 }

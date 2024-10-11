@@ -1,20 +1,22 @@
-:host {
-    display: flex;
-    justify-content: center;
-    margin: 170px 0px;
+.backg {
+    background-image: url("https://images4.alphacoders.com/783/thumb-1920-783472.jpg");
+    background-repeat: no-repeat; 
+    background-size: cover;
 }
 
 mat-card {
     padding: 50px;
-    // background-color: rgb(255, 226, 172);
-    // box-shadow: 10px 10px 6px rgb(255, 195, 83);
-    border: 3.6px solid orange;
+    background-color: rgba(255, 255, 255, 0.844);
+    // border: 3.6px solid orange;
 }
 
-mat-card-title,
-mat-card-content {
-    display: flex;
-    justify-content: center;
+.card-title {
+    font-size: 2.5rem;
+}
+
+.inputField {
+    position: relative;
+    top: 30px;
 }
 
 .button {
@@ -22,31 +24,24 @@ mat-card-content {
 }
 
 .login-button {
-    justify-content: flex-end;
+    background-color: rgba(255, 132, 0, 0.45);
+    font-size: 1rem;
+    padding: 15px;
+    position: relative;
+    top: 45px;
 }
 
 .signup-button {
-    justify-content: flex-start;
+    color: rgb(255, 132, 0);
+    text-decoration: underline;
+}
+
+.signupdiv {
+    position: relative;
+    top: 70px;
 }
 
 //   form {
 //     border: 1px solid black;
 //     padding: 50px;
 //   }
-
-.box {
-    width: 100px;
-    height: 100px;
-}
-
-.red {
-    background-color: red;
-}
-
-.green {
-    background-color: green;
-}
-
-.blue {
-    background-color: blue;
-}

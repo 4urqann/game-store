@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NotificationService } from '../../../shared/services/notification.service';
-import { CartService } from '../../services/cart.service';
+import { NotificationService } from '../../services/notification.service';
+import { CartService } from '../../../home/services/cart.service';
 import { AuthenticationService } from '../../../authentication/authentication.service';
 
 @Component({

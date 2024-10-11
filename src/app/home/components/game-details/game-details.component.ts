@@ -16,12 +16,13 @@ export class GameDetailsComponent implements OnInit {
   constructor(
     private Http: HttpClient,
     private route: ActivatedRoute,
-    private cartService: CartService
+    public cartService: CartService
   ) { }
-  BaseURL: string = "http://localhost:3000/games";
+  
+  // BaseURL: string = "http://localhost:3000/games";
 
-  game!: Game;
-  alreadyOwned: boolean = false;
+  gameOpen!: Game;
+  // alreadyOwned: boolean = false;
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
@@ -30,45 +31,60 @@ export class GameDetailsComponent implements OnInit {
     });
   }
 
+  getGame(id: string) {
+    const games: Game[] = this.cartService.games;
+
+    games.forEach(game => {
+      if (game.id === id) {
+        this.gameOpen = game;
+      } else {}
+    });
+  }
+    
+
   // isGameOwned() {
   //   const alreadyOwned = this.cartService.gamesOwned.find((ownedGame) => this.game.id === ownedGame.id);
   //   return alreadyOwned;
   // }
 
-  getGame(id: string) {
-    this.Http.get<Game>(this.BaseURL + "/" + id)
-      .subscribe((game: Game) => {
-        this.game = game;
-        console.log(game);
-        this.doesGameExist();
-        this.isGameOwned();
-      });
-  }
+  //json-server****---------------------------------------------------****
+
+  // getGame(id: string) {
+  //   this.Http.get<Game>(this.BaseURL + "/" + id)
+  //     .subscribe((game: Game) => {
+  //       this.game = game;
+  //       console.log(game);
+  //       this.doesGameExist();
+  //       this.isGameOwned();
+  //     });
+  // }
 
   doesGameExist(): boolean {
-    const foundGame = this.cartService.addedGames.find((game) => game.id === this.game.id);
+    const foundGame = this.cartService.addedGames.find((game) => game.id === this.gameOpen.id);
     return foundGame === undefined ? false : true;
   }
 
   isGameOwned() {
-    this.cartService.gamesOwned.forEach(ownedGame => {
-      if (this.game.id === ownedGame.id) {
-        this.alreadyOwned = true;
-      }
-    });
+    const foundGame = this.cartService.gamesOwned.find((game) => game.id === this.gameOpen.id);
+    return foundGame === undefined ? false : true;
+    // this.cartService.gamesOwned.forEach(ownedGame => {
+    //   if (this.gameOpen.id === ownedGame.id) {
+    //     this.alreadyOwned = true;
+    //   }
+    // });
   }
 
   onAdd() {
-    this.cartService.addToCart(this.game);
+    this.cartService.addToCart(this.gameOpen);
     console.log(this.cartService.addedGames);
   }
 
   onRemove() {
-    this.cartService.removeFromCart(this.game);
+    this.cartService.removeFromCart(this.gameOpen);
   }
 
   onBuy() {
-    this.cartService.singlePurchase(this.game);
+    this.cartService.singlePurchase(this.gameOpen);
   }
   
 
